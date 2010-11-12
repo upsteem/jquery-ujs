@@ -78,26 +78,15 @@ jQuery(function ($) {
      */
     var jqueryVersion = $().jquery;
 
-    if ( (jqueryVersion === '1.4') || (jqueryVersion === '1.4.1') || (jqueryVersion === '1.4.2')){
-      $('a[data-confirm], button[data-confirm], input[data-confirm]').live('click', function () {
-          var el = $(this);
-          if (el.triggerAndReturn('confirm')) {
-              if (!confirm(el.attr('data-confirm'))) {
-                  return false;
-              }
-          }
-      });
-    } else {
-      $('body').delegate('a[data-confirm], button[data-confirm], input[data-confirm]', 'click', function () {
-          var el = $(this);
-          if (el.triggerAndReturn('confirm')) {
-              if (!confirm(el.attr('data-confirm'))) {
-                  return false;
-              }
-          }
-      });
-    }
-    
+    $('a[data-confirm], button[data-confirm], input[data-confirm]').live('click', function () {
+        var el = $(this);
+        if (el.triggerAndReturn('confirm')) {
+            if (!confirm(el.attr('data-confirm'))) {
+                return false;
+            }
+        }
+    });
+  
 
 
     /**
