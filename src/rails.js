@@ -76,8 +76,6 @@ jQuery(function ($) {
     /**
      *  confirmation handler
      */
-    var jqueryVersion = $().jquery;
-
     $('a[data-confirm], button[data-confirm], input[data-confirm]').live('click', function () {
         var el = $(this);
         if (el.triggerAndReturn('confirm')) {
@@ -147,5 +145,10 @@ jQuery(function ($) {
                  .val(input.data('enable-with'));
         });
     });
+
+    var jqueryVersion = $().jquery;
+    if (!( (jqueryVersion === '1.4') || (jqueryVersion === '1.4.1') || (jqueryVersion === '1.4.2') )){
+      alert('This rails.js does not support the jQuery version you are using. Please read documentation.')
+    }
 
 });
