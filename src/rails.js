@@ -146,6 +146,11 @@
           data = element.data('params') || null;
         }
 
+        var xhrFields = {}
+        if (withCredentials) {
+          xhrFields["withCredentials"] = withCredentials;
+        }
+
         options = {
           type: method || 'GET', data: data, dataType: dataType,
           // stopping the "ajax:beforeSend" event will cancel the ajax request
@@ -164,9 +169,7 @@
           error: function(xhr, status, error) {
             element.trigger('ajax:error', [xhr, status, error]);
           },
-          xhrFields: {
-            withCredentials: withCredentials
-          },
+          xhrFields: xhrFields,
           crossDomain: crossDomain
         };
         // Only pass url to `ajax` options if not blank
